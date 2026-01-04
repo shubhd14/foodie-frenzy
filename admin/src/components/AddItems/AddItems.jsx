@@ -56,7 +56,6 @@ const AddItems = () => {
       const res = await axios.post(
         'http://localhost:4000/api/items',
         payload,
-        { headers: { 'Content-Type': 'multipart/form-data' } }
       );
       console.log('Created Item:', res.data);
       setFormData({
