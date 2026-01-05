@@ -2,10 +2,9 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js'
-
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+import adminRouter from './routes/adminRoute.js';
 import userRouter from './routes/userRoute.js'
 import cartRouter from './routes/cartRoute.js'
 import itemRouter from './routes/itemRoute.js';
@@ -44,6 +43,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/cart', cartRouter)
 app.use('/api/items', itemRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/admin', adminRouter);
 
 app.get('/', (req, res) => {
     res.send('API WORKING');

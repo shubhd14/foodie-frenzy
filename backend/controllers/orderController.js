@@ -1,6 +1,6 @@
 // controllers/orderController.js
 //import Stripe from 'stripe';
-import Order from '../modals/order.js';
+import Order from '../models/order.js';
 import 'dotenv/config';
 
 //const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);

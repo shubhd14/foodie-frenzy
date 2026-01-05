@@ -25,6 +25,16 @@ const AdminNavbar = () => {
         >
           {menuOpen ? <FiX /> : <FiMenu />}
         </button>
+        <button
+  onClick={() => {
+    localStorage.removeItem('adminLoggedIn');
+    window.location.href = '/login';
+  }}
+  className="text-red-400 font-bold"
+>
+  Logout
+</button>
+
 
         <div className={styles.desktopMenu}>
           {navLinks.map(link => (

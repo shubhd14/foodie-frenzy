@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import { CartItem } from '../modals/cartItem.js';
+import { CartItem } from '../models/cartItem.js';
 
 // GET /api/cart
 export const getCart = asyncHandler(async (req, res) => {

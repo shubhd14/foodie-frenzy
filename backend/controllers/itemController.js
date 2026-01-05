@@ -1,4 +1,4 @@
-import Item from '../modals/item.js';
+import Item from '../models/item.js';
 
 export const createItem = async (req, res, next) => {
     try {
