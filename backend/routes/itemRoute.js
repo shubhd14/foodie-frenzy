@@ -14,8 +14,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-itemRouter.post('/', upload.single('image'), createItem);
-itemRouter.get('/', getItems);
-itemRouter.delete('/:id', deleteItem);
+router.post('/', adminAuth, upload.single('image'), createItem);
+router.get('/', adminAuth, getItems);
+router.delete('/:id', adminAuth, deleteItem);
 
 export default itemRouter;

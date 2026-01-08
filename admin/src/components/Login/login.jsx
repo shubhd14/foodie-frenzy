@@ -1,19 +1,35 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault(); // ✅ correct
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-    if (email === 'admin@foodie.com' && password === 'Admin@Foodie#2026!') {
-      localStorage.setItem('adminToken', 'true'); // ✅ SAME KEY EVERYWHERE
+    try {
+      const res = await axios.post(
+        'http://localhost:4000/api/admin/login',
+        { email, password }
+      );
+
+      // ✅ backend se aaya data
+      const { token, restaurant } = res.data;
+
+      // ✅ IMPORTANT: localStorage
+      localStorage.setItem('adminToken', token);
+      localStorage.setItem('restaurantId', restaurant);
+
       navigate('/');
-    } else {
-      alert('Invalid Admin Credentials');
+    } catch (err) {
+      alert(err.response?.data?.message || 'Login failed');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -47,9 +63,10 @@ const AdminLogin = () => {
 
         <button
           type="submit"
+          disabled={loading}
           className="w-full bg-amber-500 text-black py-2 rounded font-bold"
         >
-          Login
+          {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>
     </div>

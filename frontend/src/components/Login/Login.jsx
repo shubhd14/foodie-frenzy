@@ -50,6 +50,9 @@ const Login = ({ onLoginSuccess, onClose }) => {
         if (res.status === 200 && res.data.success && res.data.token) {
           // Save your JWT however you prefer
           localStorage.setItem('authToken', res.data.token);
+          localStorage.setItem('adminToken', res.data.token);
+          localStorage.setItem('restaurantId', res.data.restaurant._id);
+          localStorage.setItem('restaurantName', res.data.restaurant.name);
     
           // Remember-me for the form
           formData.rememberMe

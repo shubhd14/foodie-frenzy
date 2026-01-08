@@ -17,14 +17,19 @@ export const adminLogin = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: admin._id, role: 'admin' },
-      process.env.JWT_SECRET,
-      { expiresIn: '1d' }
+      {
+    adminId: admin._id,
+    restaurantId: admin.restaurant,
+    role: 'admin'
+  },
+  process.env.JWT_SECRET,
+  { expiresIn: '1d' }
     );
 
     res.json({
       message: 'Admin login successful',
       token,
+      restaurant: admin.restaurant
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

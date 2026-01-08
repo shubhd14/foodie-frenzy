@@ -11,6 +11,10 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+     restaurant: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Restaurant'
+  }
   },
   { timestamps: true }
 );
