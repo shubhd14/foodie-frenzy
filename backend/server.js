@@ -9,12 +9,14 @@ import userRouter from './routes/userRoute.js'
 import cartRouter from './routes/cartRoute.js'
 import itemRouter from './routes/itemRoute.js';
 import orderRouter from './routes/orderRoute.js';
+import superAdminRoutes from './routes/superadminroutes.js';
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 
 // MIDDLEWARE 
 app.use(
@@ -44,6 +46,7 @@ app.use('/api/cart', cartRouter)
 app.use('/api/items', itemRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/admin', adminRouter);
+app.use('/api/superadmin', superAdminRoutes);
 
 app.get('/', (req, res) => {
     res.send('API WORKING');
@@ -53,4 +56,3 @@ app.listen(port, () => {
     console.log(`Server Started on http://localhost:${port}`)
 })
 console.log("ITEM ROUTER MOUNTED");
-app.use('/api/items', itemRouter);

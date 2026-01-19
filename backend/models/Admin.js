@@ -11,6 +11,7 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+     role: { type: String, enum: ["SUPER_ADMIN", "RESTAURANT_ADMIN"] },
      restaurant: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Restaurant'
