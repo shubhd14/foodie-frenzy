@@ -6,13 +6,27 @@ import Orders from './components/Orders/Orders';
 import ListItems from './components/ListItems/ListItems';
 import AdminLogin from './components/Login/login';
 import AdminProtectedRoute from './components/AdminProtectedRoute';
+
+// ✅ SUPER ADMIN IMPORTS
+import SuperAdminLogin from './components/superadmin/SuperAdminLogin';
+import SuperAdminDashboard from './components/superadmin/SuperAdminDashboard';
+import CreateRestaurant from './components/superadmin/CreateRestaurant';
+
 function App() {
   return (
     <Routes>
-      {/* ADMIN LOGIN */}
+
+      {/* ================= SUPER ADMIN ================= */}
+      <Route path="/superadmin/login" element={<SuperAdminLogin />} />
+      <Route path="/superadmin/dashboard" element={<SuperAdminDashboard />} />
+      <Route
+        path="/superadmin/create-restaurant"
+        element={<CreateRestaurant />}
+      />
+
+      {/* ================= RESTAURANT ADMIN ================= */}
       <Route path="/login" element={<AdminLogin />} />
 
-      {/* ADMIN PROTECTED ROUTES */}
       <Route
         path="/"
         element={

@@ -57,6 +57,7 @@ export const CartProvider = ({ children }) => {
   // Hydrate from server
   useEffect(() => {
     const token = localStorage.getItem('authToken');
+    if (!token) return; 
     axios
       .get('http://localhost:4000/api/cart', {
         withCredentials: true,

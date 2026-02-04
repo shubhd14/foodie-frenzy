@@ -1,8 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Restaurant from "../models/Restaurant.js";
-import Admin from "../models/Admin.js";
-
+import Admin from "../models/admin.js";
 export const superAdminLogin = async (req, res) => {
   try {
     const { email, password } = req.body;

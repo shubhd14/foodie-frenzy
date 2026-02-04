@@ -19,11 +19,11 @@ const AdminLogin = () => {
       );
 
       // ✅ backend se aaya data
-      const { token, restaurant } = res.data;
+      const { token, restaurantId } = res.data;
 
       // ✅ IMPORTANT: localStorage
       localStorage.setItem('adminToken', token);
-      localStorage.setItem('restaurantId', restaurant);
+      localStorage.setItem('restaurantId', restaurantId);
 
       navigate('/');
     } catch (err) {
